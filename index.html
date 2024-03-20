@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Game</title>
+</head>
+<body>
+    <h1>Card Game: War</h1>
+    <button onclick="playTurn()">Play Your Turn</button>
+    
+    <div id="player1Card"></div>
+    <div id="player2Card"></div>
+    
+    <script>
+        const cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
+        
+        function playTurn() {
+            const player1Card = cards[Math.floor(Math.random() * cards.length)];
+            const player2Card = cards[Math.floor(Math.random() * cards.length)];
+            
+            document.getElementById('player1Card').innerText = `Player 1: ${player1Card}`;
+            document.getElementById('player2Card').innerText = `Player 2: ${player2Card}`;
+        }
+    </script>
+</body>
+</html>
+<script>
+    let player1Score = 0;
+    let player2Score = 0;
+    
+    function playTurn() {
+        const player1Card = cards[Math.floor(Math.random() * cards.length)];
+        const player2Card = cards[Math.floor(Math.random() * cards.length)];
+        
+        document.getElementById('player1Card').innerText = `Player 1: ${player1Card}`;
+        document.getElementById('player2Card').innerText = `Player 2: ${player2Card}`;
+        
+        if (cards.indexOf(player1Card) > cards.indexOf(player2Card)) {
+            player1Score++;
+        } else if (cards.indexOf(player2Card) > cards.indexOf(player1Card)) {
+            player2Score++;
+        }
+        
+        if (player1Score + player2Score === 15) {
+            const winner = player1Score > player2Score ? 'Player 1' : 'Player 2';
+            alert(`Game Over! Winner: ${winner}`);
+        }
+    }
+</script>
+<div id="player1Card">
+    <img src="2.jpg" alt="Card 2">
+</div>
+
